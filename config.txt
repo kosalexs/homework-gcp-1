@@ -1,0 +1,2 @@
+ssh -i ~/.ssh/kalekseev kalekseev@10.128.0.5 -o "proxycommand ssh -W %h:%p -i ~/.ssh/kalekseev kalekseev@35.209.123.239"
+alias someinternalhost='ssh -i /c/Users/Konstantin/.ssh/kalekseev kalekseev@10.128.0.5 -o proxycommand ssh -W %h:%p -i ~/.ssh/kalekseev kalekseev@35.209.123.239'
