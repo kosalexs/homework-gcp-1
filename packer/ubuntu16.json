@@ -8,7 +8,8 @@
             "source_image_family": "{{user `source_image_family`}}",
             "zone": "europe-west1-b",
             "ssh_username": "kalekseev",
-            "machine_type": "{{user `machine_type`}}"
+            "machine_type": "{{user `machine_type`}}",
+	    "image_description": "Test image with Ruby"
         }
     ],
     "provisioners": [
