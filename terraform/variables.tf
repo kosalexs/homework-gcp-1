@@ -14,6 +14,11 @@ variable zone {
   default     = "europe-west1-b"
 }
 
+variable count {
+  description = "Count of instances"
+  default     = "2"
+}
+
 variable public_key_path {
   # Описание переменной
   description = "Path to the public key used for ssh access"
