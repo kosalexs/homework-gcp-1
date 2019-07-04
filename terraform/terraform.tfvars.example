@@ -1,0 +1,5 @@
+project = "test-project-1-244707"
+public_key_path = "~/.ssh/kalekseev.pub"
+private_key_path = "~/.ssh/kalekseev"
+disk_image = "reddit-base"
+count = "2"
