@@ -30,7 +30,7 @@ resource "google_compute_url_map" "default" {
   name            = "url-map-target-proxy"
   description     = "LB ULR MAP TEST"
   default_service = "${google_compute_backend_service.puma-server.self_link}"
-  
+
   host_rule {
     hosts        = ["130.211.8.53"]
     path_matcher = "allpaths"
@@ -53,14 +53,18 @@ resource "google_compute_backend_service" "puma-server" {
   protocol         = "http"
   timeout_sec      = 10
   session_affinity = "NONE"
-  backend          = [
-    { group = "${google_compute_instance_group.puma-servers.self_link}" }
+
+  backend = [
+    {
+      group = "${google_compute_instance_group.puma-servers.self_link}"
+    },
   ]
+
   health_checks = ["${google_compute_health_check.http.self_link}"]
 }
 
 resource "google_compute_health_check" "http" {
-  count = "1"
+  count   = "1"
   project = "test-project-1-244707"
   name    = "puma-test-hc"
 
