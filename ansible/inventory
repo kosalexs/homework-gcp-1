@@ -1,0 +1,1 @@
+appserver ansible_host=34.76.90.163 ansible_user=kalekseev ansible_private_key_file=~/.ssh/kalekseev
