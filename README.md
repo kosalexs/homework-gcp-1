@@ -14,3 +14,5 @@ Add:
   2) 2 images - app and db
   3) Immutable Infrasturture
 
+# Homework Ansible 1
+  1) Make JSON dynamic inventory
