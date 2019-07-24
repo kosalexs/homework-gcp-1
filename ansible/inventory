@@ -1,2 +1,4 @@
-appserver ansible_host=35.205.118.110 ansible_user=kalekseev ansible_private_key_file=~/.ssh/kalekseev
-dbserver ansible_host=35.240.75.170 ansible_user=kalekseev ansible_private_key_file=~/.ssh/kalekseev
+[app]
+appserver ansible_host=35.205.118.110
+[db]
+dbserver ansible_host=35.240.75.170
