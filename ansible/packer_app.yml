@@ -1,0 +1,50 @@
+- name: Apt update & Install Ruby
+  hosts: default
+  become: true
+  tasks: 
+    - name: Fetch the latest version of application code  
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - ruby-full
+        - ruby-bundler
+        - build-essential
+
+- name: Deploy application
+  hosts: default
+  become: true
+  tasks:  
+    - name: Fetch the latest version of application code
+      git:
+        repo: 'https://github.com/express42/reddit.git'
+        dest: /home/kalekseev/reddit
+        version: monolith # <-- Указываем нужную ветку
+    - name: Bundle install
+      bundler:
+        state: present
+        chdir: /home/kalekseev/reddit # <-- В какой директории выполнить команду bundle
+
+- name: Configure application
+  hosts: default
+  become: true
+  vars:
+    db_host: 10.132.0.5
+  tasks:
+    - name: Add unit file for Puma
+      copy:
+        src: files/puma.service
+        dest: /etc/systemd/system/puma.service
+      notify: reload puma
+    - name: Add config for DB connection
+      template:
+        src: templates/db_config.j2
+        dest: /home/kalekseev/db_config
+        owner: kalekseev
+        group: kalekseev
+    - name: enable puma
+      systemd: name=puma enabled=yes
+  handlers:
+    - name: reload puma
+      systemd: name=puma state=restarted 
