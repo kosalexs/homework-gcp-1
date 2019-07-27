@@ -16,3 +16,6 @@ Add:
 
 # Homework Ansible 1
   1) Make JSON dynamic inventory
+  
+# Homework Ansible 2
+  1) Make packer + ansible configuration
