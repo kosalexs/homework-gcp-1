@@ -19,3 +19,6 @@ Add:
   
 # Homework Ansible 2
   1) Make packer + ansible configuration
+
+# Homework Ansible 3
+  1) Make Ansible roles
